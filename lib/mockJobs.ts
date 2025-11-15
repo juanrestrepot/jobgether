@@ -1,0 +1,86 @@
+import { JobMatch } from './storage';
+
+// Mock job data for the matches screen
+export const mockJobs: JobMatch[] = [
+  {
+    id: '1',
+    title: 'Senior Frontend Engineer',
+    company: 'TechCorp',
+    matchPercentage: 94,
+    tags: ['Remote', 'Full-Time', 'US/Europe'],
+    description: 'Build beautiful user interfaces with React and Next.js',
+  },
+  {
+    id: '2',
+    title: 'Product Designer',
+    company: 'DesignStudio',
+    matchPercentage: 89,
+    tags: ['Hybrid', 'Full-Time', 'Europe'],
+    description: 'Create intuitive and delightful user experiences',
+  },
+  {
+    id: '3',
+    title: 'Full Stack Developer',
+    company: 'StartupHub',
+    matchPercentage: 87,
+    tags: ['Remote', 'Full-Time', 'Global'],
+    description: 'Work on cutting-edge products from anywhere',
+  },
+  {
+    id: '4',
+    title: 'UX/UI Designer',
+    company: 'CreativeAgency',
+    matchPercentage: 85,
+    tags: ['Hybrid', 'Full-Time', 'US'],
+    description: 'Design user-centered digital experiences',
+  },
+  {
+    id: '5',
+    title: 'React Developer',
+    company: 'WebSolutions',
+    matchPercentage: 92,
+    tags: ['Remote', 'Full-Time', 'Global'],
+    description: 'Develop modern web applications with React',
+  },
+  {
+    id: '6',
+    title: 'Senior Product Manager',
+    company: 'ProductLabs',
+    matchPercentage: 78,
+    tags: ['Hybrid', 'Full-Time', 'US/Europe'],
+    description: 'Lead product strategy and execution',
+  },
+  {
+    id: '7',
+    title: 'DevOps Engineer',
+    company: 'CloudTech',
+    matchPercentage: 82,
+    tags: ['Remote', 'Full-Time', 'Global'],
+    description: 'Build and maintain scalable infrastructure',
+  },
+  {
+    id: '8',
+    title: 'Mobile App Developer',
+    company: 'AppWorks',
+    matchPercentage: 80,
+    tags: ['Hybrid', 'Full-Time', 'Europe'],
+    description: 'Create native mobile experiences',
+  },
+  {
+    id: '9',
+    title: 'Data Engineer',
+    company: 'DataFlow',
+    matchPercentage: 75,
+    tags: ['Remote', 'Full-Time', 'US'],
+    description: 'Build data pipelines and analytics platforms',
+  },
+  {
+    id: '10',
+    title: 'Backend Engineer',
+    company: 'ServerStack',
+    matchPercentage: 88,
+    tags: ['Remote', 'Full-Time', 'Global'],
+    description: 'Design and implement robust APIs',
+  },
+];
+
