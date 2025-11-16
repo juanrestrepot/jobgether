@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Button from '@/components/Button';
 import Card from '@/components/Card';
+import Logo from '@/components/Logo';
 import { storage } from '@/lib/storage';
 import { mockJobs } from '@/lib/mockJobs';
 
@@ -34,10 +35,7 @@ export default function MatchesPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
         <div className="mb-8">
-          <Link href="/" className="inline-flex items-center space-x-2 mb-6">
-            <span className="text-2xl font-bold text-primary-green">J</span>
-            <span className="text-2xl font-bold text-primary-blue">obgether</span>
-          </Link>
+          <Logo size="md" className="mb-6" />
 
           <div className="bg-gradient-to-r from-primary-green to-primary-blue rounded-xl p-6 mb-6 text-white">
             <h1 className="text-3xl font-bold mb-2">

@@ -7,7 +7,16 @@ import Button from '@/components/Button';
 import Input from '@/components/Input';
 import Card from '@/components/Card';
 import ProgressBar from '@/components/ProgressBar';
+import Logo from '@/components/Logo';
 import { storage } from '@/lib/storage';
+
+// Mock data for autofill
+const MOCK_PROFILE_DATA = {
+  preferredRoles: 'Frontend Developer, Product Designer',
+  location: 'Colombia',
+  linkedInUrl: 'https://linkedin.com/in/juanrestrepo',
+  resumeUploaded: false,
+};
 
 export default function SetupProfilePage() {
   const router = useRouter();
@@ -28,7 +37,7 @@ export default function SetupProfilePage() {
       return;
     }
 
-    // Load existing profile if available
+    // Load existing profile if available, otherwise use mock data
     const existingProfile = storage.getProfile();
     if (existingProfile) {
       setFormData((prev) => ({
@@ -38,6 +47,9 @@ export default function SetupProfilePage() {
         linkedInUrl: existingProfile.linkedInUrl || '',
         resumeUploaded: existingProfile.resumeUploaded || false,
       }));
+    } else {
+      // Auto-fill with mock data for prototype
+      setFormData(MOCK_PROFILE_DATA);
     }
   }, [router, user]);
 
@@ -79,10 +91,7 @@ export default function SetupProfilePage() {
       newErrors.location = 'Location is required';
     }
 
-    // Either LinkedIn URL or Resume must be provided
-    if (!formData.linkedInUrl.trim() && !formData.resumeUploaded) {
-      newErrors.linkedInUrl = 'Please provide either LinkedIn URL or upload your resume';
-    }
+    // LinkedIn URL and Resume are both optional now
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -115,8 +124,7 @@ export default function SetupProfilePage() {
   };
 
   const isFormValid = formData.preferredRoles.trim() && 
-                      formData.location.trim() && 
-                      (formData.linkedInUrl.trim() || formData.resumeUploaded);
+                      formData.location.trim();
 
   if (!user) {
     return null; // Will redirect
@@ -126,10 +134,7 @@ export default function SetupProfilePage() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-8">
-          <Link href="/" className="inline-flex items-center space-x-2 mb-4">
-            <span className="text-2xl font-bold text-primary-green">J</span>
-            <span className="text-2xl font-bold text-primary-blue">obgether</span>
-          </Link>
+          <Logo size="md" className="mb-4" />
         </div>
 
         <ProgressBar currentStep={2} totalSteps={3} label="Profile Setup" />
@@ -170,7 +175,7 @@ export default function SetupProfilePage() {
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  LinkedIn URL
+                  LinkedIn URL <span className="text-gray-500 font-normal">(optional)</span>
                 </label>
                 <Input
                   name="linkedInUrl"

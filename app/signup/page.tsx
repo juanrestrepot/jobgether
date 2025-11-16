@@ -1,12 +1,21 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Button from '@/components/Button';
 import Input from '@/components/Input';
 import Card from '@/components/Card';
+import Logo from '@/components/Logo';
 import { storage } from '@/lib/storage';
+
+// Mock data for autofill
+const MOCK_USER_DATA = {
+  firstName: 'Juan',
+  lastName: 'Restrepo',
+  email: 'juan.restrepo@example.com',
+  password: 'password123',
+};
 
 export default function SignupPage() {
   const router = useRouter();
@@ -18,6 +27,11 @@ export default function SignupPage() {
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isLoading, setIsLoading] = useState(false);
+
+  // Auto-fill form with mock data on mount
+  useEffect(() => {
+    setFormData(MOCK_USER_DATA);
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -98,10 +112,7 @@ export default function SignupPage() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50 flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <Link href="/" className="inline-flex items-center space-x-2 mb-4">
-            <span className="text-3xl font-bold text-primary-green">J</span>
-            <span className="text-3xl font-bold text-primary-blue">obgether</span>
-          </Link>
+          <Logo size="lg" className="mb-4" />
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
             Create your Jobgether account
           </h1>
