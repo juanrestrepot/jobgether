@@ -13,10 +13,15 @@ module.exports = {
           'blue-light': '#3B82F6',
           green: '#10B981',
           'green-light': '#34D399',
+          'jobgether-green': '#00C897',
         },
         accent: {
           blue: '#2563EB',
           green: '#059669',
+        },
+        jobgether: {
+          green: '#00C897',
+          dark: '#1F2937',
         },
       },
     },
