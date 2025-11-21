@@ -83,7 +83,15 @@ export default function PathfinderPage() {
   };
 
   const getJobgetherUrl = (roleTitle: string) => {
-    return `https://jobgether.com/jobs?search=${encodeURIComponent(roleTitle)}`;
+    // Convert role title to slug format (lowercase, spaces to hyphens)
+    const slug = roleTitle
+      .toLowerCase()
+      .trim()
+      .replace(/[^\w\s-]/g, '') // Remove special characters
+      .replace(/\s+/g, '-')     // Replace spaces with hyphens
+      .replace(/-+/g, '-');     // Replace multiple hyphens with single hyphen
+    
+    return `https://jobgether.com/remote-jobs/${slug}`;
   };
 
   return (
